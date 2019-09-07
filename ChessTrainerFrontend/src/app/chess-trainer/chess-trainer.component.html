@@ -1,5 +1,11 @@
 <p>chess-trainer works!</p>
 
+<div *ngFor="let field of fields; let fieldId = index"
+[ngClass]="{'black': fieldId%2 == 0, 'white': fieldId%2 != 0, 'box': true }">
+<p>{{fieldId}}</p>
+   <img [src] = "ChessmanImage"/>
+</div>
+
 Start position: <input type="text" [(ngModel)]="contextRequest.StartPosition"><br>
 End position: <input type="text" [(ngModel)]="contextRequest.DestinationPosition"><br>
 

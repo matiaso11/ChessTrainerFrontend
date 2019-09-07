@@ -1,6 +1,6 @@
 export class ChessMoveRequest
 {
-    ChessPice: ChessPiceType;
+    ChessPice: string;
     StartPosition: string;
     DestinationPosition: string;
 }
@@ -12,7 +12,11 @@ export class ChessMoveResponse
     message: string;
 }
 
-export enum ChessPiceType {
-    Knight,
-    Rook
+export class Field
+{
+    hasChessman: boolean;
+
+    constructor(hasChessman){
+        this.hasChessman = hasChessman;
+    }
 }
