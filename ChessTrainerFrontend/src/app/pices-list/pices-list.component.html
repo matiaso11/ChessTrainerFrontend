@@ -1,1 +1,11 @@
 <p>pices-list works!</p>
+
+<div *ngFor="let chessPice of chessPices">
+
+    <h3>
+        <a [routerLink]="['/chesstrainer', chessPice.name]">
+            {{ chessPice.name }}
+        </a>
+    </h3>
+  
+  </div>

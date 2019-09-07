@@ -1,1 +1,6 @@
 <p>chess-trainer works!</p>
+
+Start position: <input type="text" [(ngModel)]="contextRequest.StartPosition"><br>
+End position: <input type="text" [(ngModel)]="contextRequest.DestinationPosition"><br>
+
+<button (click)="checkIfCanMove(contextRequest)">Check if can move</button>

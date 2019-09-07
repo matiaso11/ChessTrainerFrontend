@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PicesService } from '../pices.service';
 
 @Component({
   selector: 'app-pices-list',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PicesListComponent implements OnInit {
 
-  constructor() { }
+  chessPices;
+  constructor(
+    private picesService: PicesService
+  ) { }
 
   ngOnInit() {
+    this.picesService.getItems().subscribe(ps => {
+      this.chessPices = ps;
+      console.log(JSON.stringify(ps));
+    });
   }
 
 }
