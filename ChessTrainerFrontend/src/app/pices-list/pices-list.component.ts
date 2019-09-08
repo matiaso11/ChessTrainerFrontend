@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PicesService } from '../pices.service';
+import { ChessboardService } from '../chessboard.service';
+import { Field } from '../Model/Model';
 
 @Component({
   selector: 'app-pices-list',
@@ -8,16 +10,25 @@ import { PicesService } from '../pices.service';
 })
 export class PicesListComponent implements OnInit {
 
+  fields: Field[] = new Array(64);
+  chessmanSelected: string;
   chessPices;
   constructor(
-    private picesService: PicesService
-  ) { }
+    private picesService: PicesService,
+    private chessboardService: ChessboardService
+  ) 
+  {
+    this.fields = this.chessboardService.generateFields();
+  }
 
   ngOnInit() {
     this.picesService.getItems().subscribe(ps => {
       this.chessPices = ps;
-      console.log(JSON.stringify(ps));
     });
+  }
+
+  startTraining() {
+
   }
 
 }

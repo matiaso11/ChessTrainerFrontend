@@ -1,7 +1,8 @@
 <p>chess-trainer works!</p>
 
 <div *ngFor="let field of fields; let fieldId = index"
-[ngClass]="{'box': true, 'white': !field.isBlack , 'black': field.isBlack, 'nextLine': true, 'stopNextLine':fieldId%8 == 0}">
+[ngClass]="{'box': true, 'white': !field.isBlack , 'black': field.isBlack, 'nextLine': true, 'stopNextLine':fieldId%8 == 0}"
+(click) = "checkIfCanMovePost(fieldId)">
   <img *ngIf = "field.hasChessman" [src] = "ChessmanImage"/>
 </div>
 
