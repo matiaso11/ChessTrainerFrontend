@@ -19,8 +19,7 @@ export class PicesService {
   {
     const httpOptions = {
       headers: new HttpHeaders({
-        'Content-Type':  'application/json',
-        'Authorization': 'my-auth-token'
+        'Content-Type':  'application/json'
       })
     };
 
@@ -36,6 +35,18 @@ export class PicesService {
     };
 
     return this.http.post<ChessMoveResponse>('/api/chesstrainer',request , httpOptions);
+  }
+
+  availableMoves(position: string, chessman: string) : Observable<any>
+  {
+    var path = '/api/chesstrainer/' +position+"/"+chessman;
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json'
+      })
+    };
+
+    return this.http.get<ChessMoveResponse>(path , httpOptions);
   }
 
 }

@@ -17,10 +17,12 @@ export class Field
     hasChessman: boolean;
     isBlack: boolean;
     isSelected: boolean;
+    canMove: boolean;
 
     constructor(isBlack){
         this.isBlack = isBlack;
         this.hasChessman = false;
         this.isSelected = false;
+        this.canMove = false;
     }
 }

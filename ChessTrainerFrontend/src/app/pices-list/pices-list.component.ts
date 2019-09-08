@@ -37,8 +37,4 @@ export class PicesListComponent implements OnInit {
     
   }
 
-  startTraining() {
-    
-  }
-
 }

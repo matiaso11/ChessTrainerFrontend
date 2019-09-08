@@ -16,6 +16,7 @@ export class ChessTrainerComponent implements OnInit {
   fields: Field[] = new Array(64);
   ChessmanImage :string;
   ChessmanPosition: number;
+  availableMoves: string[] = new Array();
   
   constructor(
     private picesService: PicesService,
@@ -34,6 +35,8 @@ export class ChessTrainerComponent implements OnInit {
     this.ChessmanPosition = parseInt(this.route.snapshot.paramMap.get("position"));
     this.moveChessman(this.ChessmanPosition);
     this.ChessmanImage = 'assets/images/'+this.contextRequest.ChessPice + '.png';
+    
+    this.updateAvailableFields();
     
   }
 
@@ -58,10 +61,27 @@ export class ChessTrainerComponent implements OnInit {
     });
   }
 
+  updateAvailableFields(){
+    this.availableMoves.forEach(element => {
+      this.fields[this.stringToNumberChessBoardConverter(element)].canMove = false;
+    });
+
+    this.picesService.availableMoves(this.numberToStringChessBoardConverter(this.ChessmanPosition), this.contextRequest.ChessPice)
+    .subscribe(ps => {
+      this.availableMoves = ps;
+
+      this.availableMoves.forEach(element => {
+      this.fields[this.stringToNumberChessBoardConverter(element)].canMove = true;
+    });
+    
+    });
+  }
+
   moveChessman(destiantion){
     this.fields[this.ChessmanPosition].hasChessman = false;
     this.fields[destiantion].hasChessman = true;
     this.ChessmanPosition = destiantion;
+    this.updateAvailableFields();
   }
 
   numberToStringChessBoardConverter(index: number): string{

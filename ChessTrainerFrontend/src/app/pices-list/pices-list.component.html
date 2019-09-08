@@ -17,7 +17,7 @@
 
 <div style="clear: both;">
     <a *ngIf="chessmanSelected && checkedField!=99" [routerLink]="['/chesstrainer', chessmanSelected, checkedField]">
-        <button (click)='startTraining()'>
+        <button>
             <h1>Start training</h1>
         </button>
     </a>

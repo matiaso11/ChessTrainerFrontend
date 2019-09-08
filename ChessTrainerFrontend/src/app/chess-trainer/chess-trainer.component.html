@@ -1,7 +1,18 @@
 <h1>Train!</h1>
 
 <div *ngFor="let field of fields; let fieldId = index"
-[ngClass]="{'box': true, 'white': !field.isBlack , 'black': field.isBlack, 'nextLine': true, 'stopNextLine':fieldId%8 == 0}"
+[ngClass]="{'box': true, 'white': !field.isBlack ,
+ 'black': field.isBlack, 'darkBlue': field.canMove && field.isBlack,
+ 'lightBlue': field.canMove && !field.isBlack,
+ 'nextLine': true, 'stopNextLine':fieldId%8 == 0}"
 (click) = "checkIfCanMovePost(fieldId)">
   <img *ngIf = "field.hasChessman" [src] = "ChessmanImage"/>
+</div>
+
+<div style="clear: both;">
+  <a [routerLink]="['/']">
+      <button>
+          <h1>Back to selection page</h1>
+      </button>
+  </a>
 </div>
