@@ -15,8 +15,9 @@ export class ChessMoveResponse
 export class Field
 {
     hasChessman: boolean;
+    isBlack: boolean;
 
-    constructor(hasChessman){
-        this.hasChessman = hasChessman;
+    constructor(isBlack){
+        this.isBlack = isBlack;
     }
 }

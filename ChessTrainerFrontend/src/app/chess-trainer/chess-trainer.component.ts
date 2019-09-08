@@ -22,13 +22,33 @@ export class ChessTrainerComponent implements OnInit {
     private route: ActivatedRoute
   )   
   {
-    this.ChessmanImage = '/images/'+this.contextRequest + '.png';
-    this.fields[30] = new Field(true);
+    
+    for(var i = 0; i<64; i++)
+    {
+      if (Math.floor(i/8)%2 == 0){
+        if (i%2 == 0){
+          this.fields[i] = new Field(false);
+        }
+        else{
+          this.fields[i] = new Field(true);
+        }
+      }
+      else{
+        if (i%2 == 0){
+          this.fields[i] = new Field(true);
+        }else
+        {
+          this.fields[i] = new Field(false);
+        }
+      }
+      
+    }
   }
 
   ngOnInit() {
 
     this.contextRequest.ChessPice = this.route.snapshot.paramMap.get("chessPice");
+    this.ChessmanImage = 'assets/images/'+this.contextRequest.ChessPice + '.png';
     
   }
 

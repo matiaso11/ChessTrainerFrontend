@@ -2,13 +2,21 @@
     width: 62px;
     height: 62px;
     border: 1px;
-    border-color: gray;
+    border-color: black;
 }
 
 .black {
     background-color: black;
+    color: white;
 }
 
 .white {
     background-color: white;
+}
+
+.nextLine{
+    float: left;
+}
+.stopNextLine{
+    clear: both;
 }
