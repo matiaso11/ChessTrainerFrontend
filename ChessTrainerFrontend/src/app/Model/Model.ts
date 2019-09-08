@@ -19,5 +19,6 @@ export class Field
 
     constructor(isBlack){
         this.isBlack = isBlack;
+        this.hasChessman = false;
     }
 }

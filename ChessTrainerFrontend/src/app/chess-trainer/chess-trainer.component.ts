@@ -41,8 +41,10 @@ export class ChessTrainerComponent implements OnInit {
           this.fields[i] = new Field(false);
         }
       }
-      
     }
+
+    this.fields[30].hasChessman = true;
+
   }
 
   ngOnInit() {
