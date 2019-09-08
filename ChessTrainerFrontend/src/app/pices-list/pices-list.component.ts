@@ -13,6 +13,7 @@ export class PicesListComponent implements OnInit {
   fields: Field[] = new Array(64);
   chessmanSelected: string;
   chessPices;
+  checkedField: number = 99;
   constructor(
     private picesService: PicesService,
     private chessboardService: ChessboardService
@@ -27,8 +28,17 @@ export class PicesListComponent implements OnInit {
     });
   }
 
-  startTraining() {
+  selectField(input: number) {
+    
+    if(this.checkedField != 99)
+      this.fields[this.checkedField].isSelected = false;
+    this.checkedField = input;
+    this.fields[input].isSelected = true;
+    
+  }
 
+  startTraining() {
+    
   }
 
 }

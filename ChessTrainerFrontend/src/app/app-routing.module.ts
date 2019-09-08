@@ -6,7 +6,7 @@ import { ChessTrainerComponent } from './chess-trainer/chess-trainer.component';
 
 const routes: Routes = [
   { path: '', component: PicesListComponent },
-  { path: 'chesstrainer/:chessPice', component: ChessTrainerComponent },
+  { path: 'chesstrainer/:chessPice/:position', component: ChessTrainerComponent },
 ];
 
 @NgModule({

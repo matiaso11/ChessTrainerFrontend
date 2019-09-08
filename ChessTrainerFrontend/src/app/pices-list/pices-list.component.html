@@ -1,26 +1,24 @@
 <h1>Select Chessman!</h1>
 
 <div *ngFor="let chessPice of chessPices">
-
-    <h3>
-        <a [routerLink]="['/chesstrainer', chessPice.name]">
-            {{ chessPice.name }}
-        </a>
-    </h3>
     <label>
         <input type="radio" name="chessman" [value]="chessPice.name" [(ngModel)]="chessmanSelected">
         {{ chessPice.name }}
     </label>
-
 </div>
 
 <h1>Select start Field!</h1>
 
 <div *ngFor="let field of fields; let fieldId = index"
     [ngClass]="{'box': true, 'white': !field.isBlack , 'black': field.isBlack, 'nextLine': true, 'stopNextLine':fieldId%8 == 0}"
-    (click)="checkIfCanMovePost(fieldId)">
+    (click)="selectField(fieldId)">
+    <img *ngIf="field.isSelected" width="60" height="60" src="assets/images/checked.png" />
 </div>
 
 <div style="clear: both;">
-    <button (click)='startTraining()'><h1>Start training</h1></button>
+    <a *ngIf="chessmanSelected && checkedField!=99" [routerLink]="['/chesstrainer', chessmanSelected, checkedField]">
+        <button (click)='startTraining()'>
+            <h1>Start training</h1>
+        </button>
+    </a>
 </div>

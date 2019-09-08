@@ -1,14 +1,7 @@
-<p>chess-trainer works!</p>
+<h1>Train!</h1>
 
 <div *ngFor="let field of fields; let fieldId = index"
 [ngClass]="{'box': true, 'white': !field.isBlack , 'black': field.isBlack, 'nextLine': true, 'stopNextLine':fieldId%8 == 0}"
 (click) = "checkIfCanMovePost(fieldId)">
   <img *ngIf = "field.hasChessman" [src] = "ChessmanImage"/>
-</div>
-
-<div style="clear: both">
-        Start position: <input type="text" [(ngModel)]="contextRequest.StartPosition"><br>
-        End position: <input type="text" [(ngModel)]="contextRequest.DestinationPosition"><br>
-        
-        <button (click)="checkIfCanMove(contextRequest)">Check if can move</button>
 </div>

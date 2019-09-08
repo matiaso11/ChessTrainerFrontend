@@ -16,9 +16,11 @@ export class Field
 {
     hasChessman: boolean;
     isBlack: boolean;
+    isSelected: boolean;
 
     constructor(isBlack){
         this.isBlack = isBlack;
         this.hasChessman = false;
+        this.isSelected = false;
     }
 }

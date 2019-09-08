@@ -17,8 +17,6 @@ export class ChessTrainerComponent implements OnInit {
   ChessmanImage :string;
   ChessmanPosition: number;
   
-  
-
   constructor(
     private picesService: PicesService,
     private route: ActivatedRoute,
@@ -28,27 +26,15 @@ export class ChessTrainerComponent implements OnInit {
     
     this.fields = this.chessboardService.generateFields();
 
-    this.fields[30].hasChessman = true;
-    this.ChessmanPosition = 30;
-
   }
 
   ngOnInit() {
 
     this.contextRequest.ChessPice = this.route.snapshot.paramMap.get("chessPice");
+    this.ChessmanPosition = parseInt(this.route.snapshot.paramMap.get("position"));
+    this.moveChessman(this.ChessmanPosition);
     this.ChessmanImage = 'assets/images/'+this.contextRequest.ChessPice + '.png';
     
-  }
-
-  checkIfCanMove() {
-    this.picesService.checkIfCanMove(this.contextRequest).subscribe(ps => {
-      this.contextResponse = ps;
-      console.log(JSON.stringify(ps));
-      if(!this.contextResponse.isAvailable)
-      {
-        alert(this.contextResponse.message)
-      }
-    });
   }
 
   checkIfCanMovePost(index: number) {
