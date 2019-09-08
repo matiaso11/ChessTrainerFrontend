@@ -67,7 +67,7 @@ export class ChessTrainerComponent implements OnInit {
   numberToStringChessBoardConverter(index: number): string{
 
     var col: number = index%8 + 1;
-    var row: number = index/8;
+    var row: number = index/8 + 1;
     var colStr = String.fromCharCode(96 + col);
     var rowStr = String.fromCharCode(48 + row);
 
