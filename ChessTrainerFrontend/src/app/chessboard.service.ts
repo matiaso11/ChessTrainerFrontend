@@ -34,4 +34,12 @@ export class ChessboardService {
 
     return fields;
   }
+
+  ASCII_SUBTRACTOR_TO_1(): number {
+    return 48;
+  }
+  ASCII_SUBTRACTOR_TO_A(): number {
+    return 64;
+  }
+
 }

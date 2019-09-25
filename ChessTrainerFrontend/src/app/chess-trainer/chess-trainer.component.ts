@@ -9,6 +9,7 @@ import { ChessboardService } from '../chessboard.service';
   templateUrl: './chess-trainer.component.html',
   styleUrls: ['./chess-trainer.component.css']
 })
+
 export class ChessTrainerComponent implements OnInit {
 
   contextRequest = new ChessMoveRequest();
@@ -50,7 +51,6 @@ export class ChessTrainerComponent implements OnInit {
     req.DestinationPosition = destination;
     this.picesService.checkIfCanMove(req).subscribe(ps => {
       this.contextResponse = ps;
-      console.log(JSON.stringify(ps));
       if(!this.contextResponse.isAvailable)
       {
         alert(this.contextResponse.message)
@@ -88,15 +88,15 @@ export class ChessTrainerComponent implements OnInit {
 
     var col: number = index%8 + 1;
     var row: number = index/8 + 1;
-    var colStr = String.fromCharCode(96 + col);
-    var rowStr = String.fromCharCode(48 + row);
+    var colStr = String.fromCharCode(this.chessboardService.ASCII_SUBTRACTOR_TO_A() + col);
+    var rowStr = String.fromCharCode(this.chessboardService.ASCII_SUBTRACTOR_TO_1() + row);
 
     return rowStr.concat(colStr);
   }
   stringToNumberChessBoardConverter(input: string): number{
 
-    var col: number = input.charCodeAt(1) - 97;
-    var row: number = input.charCodeAt(0) - 49;
+    var col: number = input.charCodeAt(1) - this.chessboardService.ASCII_SUBTRACTOR_TO_A()-1;
+    var row: number = input.charCodeAt(0) - this.chessboardService.ASCII_SUBTRACTOR_TO_1()-1;
 
     return col + row*8;
   }
